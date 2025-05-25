@@ -112,25 +112,41 @@ export default function Home() {
           </div>
           <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-row flex-wrap gap-2 justify-center bg-gray-100">
             <button
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+              className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition-colors"
+              style={{ textShadow: "0 1px 4px rgba(0,0,0,0.7)" }}
               onClick={handleRandomAll}
             >
               すべて
             </button>
             <button
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              style={{
+                backgroundColor: leftColor,
+                color: "#fff",
+                textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+              }}
+              className="px-4 py-2 rounded hover:opacity-80 transition-colors"
               onClick={handleRandomLeft}
             >
               左
             </button>
             <button
-              className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors"
+              style={{
+                backgroundColor: centerColor,
+                color: "#fff",
+                textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+              }}
+              className="px-4 py-2 rounded hover:opacity-80 transition-colors"
               onClick={handleRandomCenter}
             >
               真ん中
             </button>
             <button
-              className="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition-colors"
+              style={{
+                backgroundColor: rightColor,
+                color: "#fff",
+                textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+              }}
+              className="px-4 py-2 rounded hover:opacity-80 transition-colors"
               onClick={handleRandomRight}
             >
               右
@@ -143,7 +159,7 @@ export default function Home() {
             leftColor={leftColor}
             rightColor={rightColor}
             centerColor={centerColor}
-            height={isMobile ? "8rem" : "40rem"}
+            height={isMobile ? "16rem" : "40rem"}
             centerSquareSize={isMobile ? "5rem" : "10rem"}
           />
         </div>
