@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { HexColorPicker } from "react-colorful";
 import { ColorPickerStrategy } from "@/types/color";
 
@@ -19,6 +19,19 @@ interface ColorPickerProps {
 export function ColorPicker({ value, onChange }: ColorPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState(value);
+  const pickerRef = useRef<HTMLDivElement>(null);
+
+  // 外側クリックで閉じる
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [isOpen]);
 
   // HEX or RGBA
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +42,7 @@ export function ColorPicker({ value, onChange }: ColorPickerProps) {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block" ref={pickerRef}>
       <button
         type="button"
         className="w-12 h-12 rounded border border-gray-300"
@@ -38,7 +51,7 @@ export function ColorPicker({ value, onChange }: ColorPickerProps) {
         aria-label="カラーピッカーを開く"
       />
       {isOpen && (
-        <div className="absolute z-20 mt-2 left-0 bg-white rounded-lg shadow-lg p-4 min-w-[220px]">
+        <div className="absolute z-20 mt-0 left-full top-1/2 -translate-y-1/2 ml-2 bg-white rounded-lg shadow-lg p-4 min-w-[220px]">
           <HexColorPicker
             color={value}
             onChange={(c) => {
