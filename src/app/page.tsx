@@ -169,7 +169,7 @@ export default function Home() {
             className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
             onClick={handleSave}
           >
-            現在の色の組み合わせを保存
+            保存
           </button>
         </div>
 
