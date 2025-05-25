@@ -1,12 +1,13 @@
 {
-  "name": "bgcolor-checker",
+  "name": "color-harmony-checker",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
