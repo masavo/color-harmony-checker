@@ -228,6 +228,19 @@ export default function Home() {
           >
             シェア
           </button>
+          <button
+            className="w-full mt-2 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-900 transition-colors"
+            onClick={() => {
+              // URLパラメータを消す
+              window.history.replaceState(null, "", window.location.pathname);
+              // すべて黒に
+              setLeftColor("#000000");
+              setCenterColor("#ffffff");
+              setRightColor("#000000");
+            }}
+          >
+            リセット
+          </button>
         </div>
 
         <div>
