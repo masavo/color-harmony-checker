@@ -27,6 +27,7 @@ export default function Home() {
     ColorCombination[]
   >([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     const loadSavedCombinations = async () => {
@@ -38,14 +39,16 @@ export default function Home() {
       setIsMobile(window.innerWidth < 428);
     };
 
-    // URLパラメータから色を初期化
+    // URLパラメータから色とタイトルを初期化
     const params = new URLSearchParams(window.location.search);
     const left = params.get("left");
     const center = params.get("center");
     const right = params.get("right");
+    const titleParam = params.get("title");
     if (left) setLeftColor("#" + left);
     if (center) setCenterColor("#" + center);
     if (right) setRightColor("#" + right);
+    if (titleParam) setTitle(titleParam);
 
     loadSavedCombinations();
     handleResize();
@@ -165,6 +168,21 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="mb-6 flex justify-center">
+          <div
+            className="text-2xl font-bold text-center border-b border-gray-300 px-4 py-2 min-w-[120px] max-w-full outline-none"
+            contentEditable
+            suppressContentEditableWarning
+            spellCheck={false}
+            onBlur={(e) => setTitle(e.currentTarget.textContent || "")}
+            onInput={(e) =>
+              setTitle((e.target as HTMLElement).textContent || "")
+            }
+          >
+            {title}
+          </div>
+        </div>
+
         <div className="mb-8">
           <LiveColorPreview
             leftColor={leftColor}
@@ -189,6 +207,7 @@ export default function Home() {
               url.searchParams.set("left", leftColor.replace("#", ""));
               url.searchParams.set("center", centerColor.replace("#", ""));
               url.searchParams.set("right", rightColor.replace("#", ""));
+              if (title) url.searchParams.set("title", title);
               navigator.clipboard.writeText(url.toString());
               alert("シェア用URLをクリップボードにコピーしました！");
             }}
