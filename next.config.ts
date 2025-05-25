@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
+import withPWA from "next-pwa";
 
-const nextConfig: NextConfig = {
-  images: {
-    unoptimized: true,
-  },
-};
+const isProd = process.env.NODE_ENV === "production";
 
-export default nextConfig;
+export default withPWA({
+  dest: "public",
+  disable: !isProd,
+});
