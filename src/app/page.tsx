@@ -117,11 +117,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div
-          className={`gap-8 mb-8 items-start justify-center ${
-            isMobile ? "flex flex-col" : "flex flex-row"
-          }`}
-        >
+        <div className={"gap-8 mb-8 items-start justify-center flex flex-row"}>
           <div className="flex-1 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">左側の色</h2>
             <ColorPicker value={leftColor} onChange={setLeftColor} />
