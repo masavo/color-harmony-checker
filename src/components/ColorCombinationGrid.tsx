@@ -33,10 +33,9 @@ export function ColorCombinationGrid({
       {combinations.map((combination) => (
         <div
           key={combination.id}
-          className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"
+          className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow flex flex-row items-center gap-4"
         >
-          <ColorCombinationPreview combination={combination} />
-          <div className="mt-4 text-center">
+          <div className="flex-1 flex flex-col justify-center gap-2">
             {editingId === combination.id ? (
               <input
                 type="text"
@@ -51,30 +50,33 @@ export function ColorCombinationGrid({
               />
             ) : (
               <h3
-                className="text-lg font-medium cursor-pointer hover:bg-gray-100 rounded px-2 py-1"
+                className="text-lg font-medium cursor-pointer hover:bg-gray-100 rounded px-2 py-1 text-left"
                 onClick={() => handleNameEdit(combination)}
               >
                 {combination.name}
               </h3>
             )}
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 mt-1 text-left">
               {combination.centerSquareColor}
             </p>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-400 mt-1 text-left">
               {new Date(combination.createdAt).toLocaleDateString()}
             </p>
+            <div className="mt-2">
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                onClick={() => {
+                  if (window.confirm("この色の組み合わせを削除しますか？")) {
+                    onDelete(combination.id);
+                  }
+                }}
+              >
+                削除
+              </button>
+            </div>
           </div>
-          <div className="mt-4 text-center">
-            <button
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
-              onClick={() => {
-                if (window.confirm("この色の組み合わせを削除しますか？")) {
-                  onDelete(combination.id);
-                }
-              }}
-            >
-              削除
-            </button>
+          <div className="flex-shrink-0">
+            <ColorCombinationPreview combination={combination} />
           </div>
         </div>
       ))}
