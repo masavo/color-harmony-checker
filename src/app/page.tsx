@@ -86,35 +86,36 @@ export default function Home() {
           背景色チェッカー
         </h1>
 
-        <div
-          className={`mb-4 flex flex-wrap gap-2 justify-center ${
-            isMobile ? "flex-col items-stretch" : ""
-          }`}
-        >
-          <button
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-            onClick={handleRandomAll}
-          >
-            すべてランダム
-          </button>
-          <button
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-            onClick={handleRandomLeft}
-          >
-            左だけランダム
-          </button>
-          <button
-            className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors"
-            onClick={handleRandomCenter}
-          >
-            真ん中だけランダム
-          </button>
-          <button
-            className="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition-colors"
-            onClick={handleRandomRight}
-          >
-            右だけランダム
-          </button>
+        <div className="mb-4 relative flex flex-col items-center">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
+            ランダム
+          </div>
+          <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-row flex-wrap gap-2 justify-center bg-gray-100">
+            <button
+              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+              onClick={handleRandomAll}
+            >
+              すべて
+            </button>
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              onClick={handleRandomLeft}
+            >
+              左
+            </button>
+            <button
+              className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors"
+              onClick={handleRandomCenter}
+            >
+              真ん中
+            </button>
+            <button
+              className="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition-colors"
+              onClick={handleRandomRight}
+            >
+              右
+            </button>
+          </div>
         </div>
 
         <div className={"gap-8 mb-8 items-start justify-center flex flex-row"}>
