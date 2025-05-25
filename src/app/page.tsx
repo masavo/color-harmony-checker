@@ -86,7 +86,11 @@ export default function Home() {
           背景色チェッカー
         </h1>
 
-        <div className="mb-4 flex flex-wrap gap-2 justify-center">
+        <div
+          className={`mb-4 flex flex-wrap gap-2 justify-center ${
+            isMobile ? "flex-col items-stretch" : ""
+          }`}
+        >
           <button
             className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
             onClick={handleRandomAll}
@@ -114,9 +118,9 @@ export default function Home() {
         </div>
 
         <div
-          className={`flex ${
-            isMobile ? "flex-col" : "flex-row"
-          } gap-8 mb-8 items-start justify-center`}
+          className={`gap-8 mb-8 items-start justify-center ${
+            isMobile ? "flex flex-col" : "flex flex-row"
+          }`}
         >
           <div className="flex-1 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">左側の色</h2>
@@ -138,6 +142,7 @@ export default function Home() {
             rightColor={rightColor}
             centerColor={centerColor}
             height={isMobile ? "8rem" : "40rem"}
+            centerSquareSize={isMobile ? "5rem" : "10rem"}
           />
         </div>
 

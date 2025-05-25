@@ -3,6 +3,7 @@ interface LiveColorPreviewProps {
   rightColor: string;
   centerColor: string;
   height?: string; // 例: '12rem' など
+  centerSquareSize?: string; // 追加
 }
 
 export function LiveColorPreview({
@@ -10,6 +11,7 @@ export function LiveColorPreview({
   rightColor,
   centerColor,
   height = "40rem",
+  centerSquareSize = "10rem", // 追加
 }: LiveColorPreviewProps) {
   return (
     <div className="relative w-full flex" style={{ height }}>
@@ -28,8 +30,8 @@ export function LiveColorPreview({
             position: "absolute",
             top: "50%",
             left: "50%",
-            width: "10rem",
-            height: "10rem",
+            width: centerSquareSize,
+            height: centerSquareSize,
             backgroundColor: centerColor,
             transform: "translate(-50%, -50%)",
             borderRadius: "0.25rem",
@@ -51,8 +53,8 @@ export function LiveColorPreview({
             position: "absolute",
             top: "50%",
             left: "50%",
-            width: "10rem",
-            height: "10rem",
+            width: centerSquareSize,
+            height: centerSquareSize,
             backgroundColor: centerColor,
             transform: "translate(-50%, -50%)",
             borderRadius: "0.25rem",
