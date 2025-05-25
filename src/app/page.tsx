@@ -183,18 +183,13 @@ export default function Home() {
         </div>
 
         <div className="mb-6 flex justify-center">
-          <div
+          <input
+            type="text"
             className="text-2xl font-bold text-center border-b border-gray-300 px-4 py-2 min-w-[120px] max-w-full outline-none"
-            contentEditable
-            suppressContentEditableWarning
-            spellCheck={false}
-            onBlur={(e) => setTitle(e.currentTarget.textContent || "")}
-            onInput={(e) =>
-              setTitle((e.target as HTMLElement).textContent || "")
-            }
-          >
-            {title}
-          </div>
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="タイトルを入力"
+          />
         </div>
 
         <div className="mb-8">
