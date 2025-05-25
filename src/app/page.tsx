@@ -118,18 +118,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={"gap-8 mb-8 items-start justify-center flex flex-row"}>
-          <div className="flex-1 flex flex-col items-center">
-            <h2 className="text-xl font-semibold mb-4">左側の色</h2>
-            <ColorPicker value={leftColor} onChange={setLeftColor} />
+        <div className="mb-8 relative flex flex-col items-center">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
+            カラーピッカー
           </div>
-          <div className="flex-1 flex flex-col items-center">
-            <h2 className="text-xl font-semibold mb-4">中央の色</h2>
-            <ColorPicker value={centerColor} onChange={setCenterColor} />
-          </div>
-          <div className="flex-1 flex flex-col items-center">
-            <h2 className="text-xl font-semibold mb-4">右側の色</h2>
-            <ColorPicker value={rightColor} onChange={setRightColor} />
+          <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-row gap-8 items-start justify-center bg-gray-100">
+            <div className="flex-1 flex flex-col items-center">
+              <h2 className="text-xl font-semibold mb-4">左</h2>
+              <ColorPicker value={leftColor} onChange={setLeftColor} />
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+              <h2 className="text-xl font-semibold mb-4">中央</h2>
+              <ColorPicker value={centerColor} onChange={setCenterColor} />
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+              <h2 className="text-xl font-semibold mb-4">右</h2>
+              <ColorPicker value={rightColor} onChange={setRightColor} />
+            </div>
           </div>
         </div>
 
