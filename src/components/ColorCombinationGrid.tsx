@@ -62,7 +62,7 @@ export function ColorCombinationGrid({
             <p className="text-xs text-gray-400 mt-1 text-left">
               {new Date(combination.createdAt).toLocaleDateString()}
             </p>
-            <div className="mt-2">
+            <div className="mt-2 flex gap-2">
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
                 onClick={() => {
@@ -72,6 +72,28 @@ export function ColorCombinationGrid({
                 }}
               >
                 削除
+              </button>
+              <button
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+                onClick={() => {
+                  const url = new URL(window.location.origin);
+                  url.searchParams.set(
+                    "left",
+                    combination.leftBackgroundColor.replace("#", "")
+                  );
+                  url.searchParams.set(
+                    "center",
+                    combination.centerSquareColor.replace("#", "")
+                  );
+                  url.searchParams.set(
+                    "right",
+                    combination.rightBackgroundColor.replace("#", "")
+                  );
+                  navigator.clipboard.writeText(url.toString());
+                  alert("シェア用URLをクリップボードにコピーしました！");
+                }}
+              >
+                シェア
               </button>
             </div>
           </div>
