@@ -138,7 +138,7 @@ export default function Home() {
               className="px-4 py-2 rounded hover:opacity-80 transition-colors"
               onClick={handleRandomCenter}
             >
-              真ん中
+              中央
             </button>
             <button
               style={{
