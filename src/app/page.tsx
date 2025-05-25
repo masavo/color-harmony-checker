@@ -38,6 +38,15 @@ export default function Home() {
       setIsMobile(window.innerWidth < 428);
     };
 
+    // URLパラメータから色を初期化
+    const params = new URLSearchParams(window.location.search);
+    const left = params.get("left");
+    const center = params.get("center");
+    const right = params.get("right");
+    if (left) setLeftColor("#" + left);
+    if (center) setCenterColor("#" + center);
+    if (right) setRightColor("#" + right);
+
     loadSavedCombinations();
     handleResize();
     window.addEventListener("resize", handleResize);
