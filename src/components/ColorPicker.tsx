@@ -14,9 +14,10 @@ interface ColorPickerProps {
   value: string;
   onChange: (color: string) => void;
   strategy?: ColorPickerStrategy; // 省略可
+  label?: string;
 }
 
-export function ColorPicker({ value, onChange }: ColorPickerProps) {
+export function ColorPicker({ value, onChange, label }: ColorPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState(value);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -45,11 +46,16 @@ export function ColorPicker({ value, onChange }: ColorPickerProps) {
     <div className="relative inline-block" ref={pickerRef}>
       <button
         type="button"
-        className="w-12 h-12 rounded border border-gray-300"
-        style={{ backgroundColor: value }}
+        className="w-12 h-12 rounded border border-gray-300 flex items-center justify-center text-white font-bold text-lg select-none"
+        style={{
+          backgroundColor: value,
+          textShadow: "0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+        }}
         onClick={() => setIsOpen((v) => !v)}
         aria-label="カラーピッカーを開く"
-      />
+      >
+        {label}
+      </button>
       {isOpen && (
         <div className="absolute z-20 mt-0 left-full top-1/2 -translate-y-1/2 ml-2 bg-white rounded-lg shadow-lg p-4 min-w-[220px]">
           <HexColorPicker

@@ -67,16 +67,21 @@ export default function Home() {
   const handleRandomCenter = () => setCenterColor(randomColor());
 
   const handleSave = async () => {
-    const name = prompt(
-      "保存する名前を入力してください（未入力の場合は中央の色のカラーコードが使用されます）"
-    );
+    let saveTitle = title;
+    if (!saveTitle) {
+      saveTitle =
+        prompt(
+          "保存する名前を入力してください（未入力の場合は中央の色のカラーコードが使用されます）"
+        ) || "";
+    }
     const combination = await storage.save({
-      name: name || centerColor,
+      name: saveTitle || centerColor,
       leftBackgroundColor: leftColor,
       rightBackgroundColor: rightColor,
       centerSquareColor: centerColor,
     });
     setSavedCombinations([...savedCombinations, combination]);
+    if (!title && saveTitle) setTitle(saveTitle);
   };
 
   const handleDelete = async (id: string) => {
@@ -106,16 +111,25 @@ export default function Home() {
           </div>
           <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-row gap-8 items-start justify-center bg-gray-100">
             <div className="flex-1 flex flex-col items-center">
-              <h2 className="text-xl font-semibold mb-4">左</h2>
-              <ColorPicker value={leftColor} onChange={setLeftColor} />
+              <ColorPicker
+                value={leftColor}
+                onChange={setLeftColor}
+                label="左"
+              />
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <h2 className="text-xl font-semibold mb-4">中央</h2>
-              <ColorPicker value={centerColor} onChange={setCenterColor} />
+              <ColorPicker
+                value={centerColor}
+                onChange={setCenterColor}
+                label="中央"
+              />
             </div>
             <div className="flex-1 flex flex-col items-center">
-              <h2 className="text-xl font-semibold mb-4">右</h2>
-              <ColorPicker value={rightColor} onChange={setRightColor} />
+              <ColorPicker
+                value={rightColor}
+                onChange={setRightColor}
+                label="右"
+              />
             </div>
           </div>
         </div>
