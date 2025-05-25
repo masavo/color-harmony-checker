@@ -222,6 +222,12 @@ export default function Home() {
             combinations={savedCombinations}
             onDelete={handleDelete}
             onNameChange={handleNameChange}
+            onSelect={(comb) => {
+              setLeftColor(comb.leftBackgroundColor);
+              setCenterColor(comb.centerSquareColor);
+              setRightColor(comb.rightBackgroundColor);
+              setTitle(comb.name);
+            }}
           />
         </div>
       </div>

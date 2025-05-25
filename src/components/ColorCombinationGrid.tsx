@@ -6,12 +6,14 @@ interface ColorCombinationGridProps {
   combinations: ColorCombination[];
   onDelete: (id: string) => void;
   onNameChange: (id: string, newName: string) => void;
+  onSelect?: (combination: ColorCombination) => void;
 }
 
 export function ColorCombinationGrid({
   combinations,
   onDelete,
   onNameChange,
+  onSelect,
 }: ColorCombinationGridProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editedName, setEditedName] = useState("");
@@ -89,6 +91,8 @@ export function ColorCombinationGrid({
                     "right",
                     combination.rightBackgroundColor.replace("#", "")
                   );
+                  if (combination.name)
+                    url.searchParams.set("title", combination.name);
                   navigator.clipboard.writeText(url.toString());
                   alert("シェア用URLをクリップボードにコピーしました！");
                 }}
@@ -98,7 +102,12 @@ export function ColorCombinationGrid({
             </div>
           </div>
           <div className="flex-shrink-0">
-            <ColorCombinationPreview combination={combination} />
+            <div
+              className={onSelect ? "cursor-pointer" : undefined}
+              onClick={() => onSelect && onSelect(combination)}
+            >
+              <ColorCombinationPreview combination={combination} />
+            </div>
           </div>
         </div>
       ))}
