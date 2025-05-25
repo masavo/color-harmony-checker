@@ -91,7 +91,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center mb-8">
+        <h1 className="text-4xl font-extrabold italic text-center mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent">
           背景色チェッカー
         </h1>
 
