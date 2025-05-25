@@ -91,9 +91,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-extrabold italic text-center mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent">
-          背景色チェッカー
-        </h1>
+        <div className="flex justify-center">
+          <h1 className="text-4xl font-extrabold italic mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            背景色チェッカー
+          </h1>
+        </div>
 
         <div className="mb-8 relative flex flex-col items-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
