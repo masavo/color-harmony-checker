@@ -180,6 +180,19 @@ export default function Home() {
           >
             保存
           </button>
+          <button
+            className="w-full mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+            onClick={() => {
+              const url = new URL(window.location.href);
+              url.searchParams.set("left", leftColor.replace("#", ""));
+              url.searchParams.set("center", centerColor.replace("#", ""));
+              url.searchParams.set("right", rightColor.replace("#", ""));
+              navigator.clipboard.writeText(url.toString());
+              alert("シェア用URLをクリップボードにコピーしました！");
+            }}
+          >
+            シェア
+          </button>
         </div>
 
         <div>
