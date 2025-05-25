@@ -42,6 +42,18 @@ export function ColorPicker({ value, onChange, label }: ColorPickerProps) {
     }
   };
 
+  // パネルの位置をlabelで切り替え
+  let panelClass =
+    "absolute z-20 bg-white rounded-lg shadow-lg p-4 min-w-[220px]";
+  if (label === "右") {
+    panelClass += " mt-0 right-full top-1/2 -translate-y-1/2 mr-2";
+  } else if (label === "中央") {
+    panelClass += " left-1/2 -translate-x-1/2 mt-2 top-full";
+  } else {
+    // 左
+    panelClass += " mt-0 left-full top-1/2 -translate-y-1/2 ml-2";
+  }
+
   return (
     <div className="relative inline-block" ref={pickerRef}>
       <button
@@ -57,7 +69,7 @@ export function ColorPicker({ value, onChange, label }: ColorPickerProps) {
         {label}
       </button>
       {isOpen && (
-        <div className="absolute z-20 mt-0 left-full top-1/2 -translate-y-1/2 ml-2 bg-white rounded-lg shadow-lg p-4 min-w-[220px]">
+        <div className={panelClass}>
           <HexColorPicker
             color={value}
             onChange={(c) => {
