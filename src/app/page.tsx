@@ -130,7 +130,28 @@ export default function Home() {
           )}
         </div>
 
-        <div className="mb-3 mt-3 relative flex flex-col items-center">
+        <div className="mb-3 flex justify-center">
+          <input
+            ref={titleInputRef}
+            type="text"
+            className="text-2xl font-bold text-center border-b border-gray-300 px-4 py-2 min-w-[120px] max-w-full outline-none"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="タイトルを入力"
+          />
+        </div>
+
+        <div className="mb-3">
+          <LiveColorPreview
+            leftColor={leftColor}
+            rightColor={rightColor}
+            centerColor={centerColor}
+            height={isMobile ? "16rem" : "40rem"}
+            centerSquareSize={isMobile ? "5rem" : "10rem"}
+          />
+        </div>
+
+        <div className="mb-3 mt-5 relative flex flex-col items-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
             カラーピッカー
           </div>
@@ -171,27 +192,6 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </div>
-
-        <div className="mb-3 flex justify-center">
-          <input
-            ref={titleInputRef}
-            type="text"
-            className="text-2xl font-bold text-center border-b border-gray-300 px-4 py-2 min-w-[120px] max-w-full outline-none"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="タイトルを入力"
-          />
-        </div>
-
-        <div className="mb-3">
-          <LiveColorPreview
-            leftColor={leftColor}
-            rightColor={rightColor}
-            centerColor={centerColor}
-            height={isMobile ? "16rem" : "40rem"}
-            centerSquareSize={isMobile ? "5rem" : "10rem"}
-          />
         </div>
 
         <div className="mb-8">
