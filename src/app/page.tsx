@@ -232,6 +232,7 @@ export default function Home() {
               setLeftColor("#000000");
               setCenterColor("#ffffff");
               setRightColor("#000000");
+              setTitle("");
             }}
           >
             リセット
