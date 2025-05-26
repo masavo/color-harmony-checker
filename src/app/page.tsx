@@ -28,6 +28,7 @@ export default function Home() {
   >([]);
   const [isMobile, setIsMobile] = useState(false);
   const [title, setTitle] = useState("");
+  const [showHelp, setShowHelp] = useState(false);
 
   useEffect(() => {
     const loadSavedCombinations = async () => {
@@ -99,10 +100,33 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center">
-          <h1 className="text-4xl font-extrabold italic mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            ColorSnap
+        <div className="flex justify-center items-center gap-2 relative">
+          <h1 className="text-4xl font-extrabold italic mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block pl-8">
+            色の相対性チェッカー
           </h1>
+          <button
+            className="ml-2 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700 text-xl font-bold focus:outline-none border border-gray-300 shadow-sm"
+            aria-label="説明を表示"
+            onClick={() => setShowHelp((v) => !v)}
+            style={{ lineHeight: 1 }}
+          >
+            ？
+          </button>
+          {showHelp && (
+            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] bg-white border border-gray-300 rounded-lg shadow-lg p-4 z-20 text-sm text-gray-700">
+              背景色の組み合わせによって、真ん中の色の見え方が変わる視覚効果を体験できるアプリです。
+              <br />
+              色の組み合わせを保存・シェアして、色の相対性を楽しんでください。
+              <div className="text-right mt-2">
+                <button
+                  className="text-blue-500 hover:underline text-xs"
+                  onClick={() => setShowHelp(false)}
+                >
+                  閉じる
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mb-8 relative flex flex-col items-center">
