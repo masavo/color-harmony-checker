@@ -258,6 +258,17 @@ export default function Home() {
           />
         </div>
       </div>
+      <footer className="w-full text-center text-xs text-gray-400 py-6">
+        created by{" "}
+        <a
+          href="https://x.com/masavo_jp"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-blue-500"
+        >
+          @masavo_jp
+        </a>
+      </footer>
     </main>
   );
 }
