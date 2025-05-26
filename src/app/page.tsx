@@ -133,78 +133,40 @@ export default function Home() {
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
             カラーピッカー
           </div>
-          <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-row gap-8 items-start justify-center bg-gray-100">
-            <div className="flex-1 flex flex-col items-center">
-              <ColorPicker
-                value={leftColor}
-                onChange={setLeftColor}
-                label="左"
-              />
+          <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-col gap-4 bg-gray-100">
+            <div className="flex flex-row gap-8 items-start justify-center">
+              <div className="flex-1 flex flex-col items-center">
+                <ColorPicker
+                  value={leftColor}
+                  onChange={setLeftColor}
+                  label="左"
+                  onRandomClick={handleRandomLeft}
+                />
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <ColorPicker
+                  value={centerColor}
+                  onChange={setCenterColor}
+                  label="中央"
+                  onRandomClick={handleRandomCenter}
+                />
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <ColorPicker
+                  value={rightColor}
+                  onChange={setRightColor}
+                  label="右"
+                  onRandomClick={handleRandomRight}
+                />
+              </div>
             </div>
-            <div className="flex-1 flex flex-col items-center">
-              <ColorPicker
-                value={centerColor}
-                onChange={setCenterColor}
-                label="中央"
-              />
-            </div>
-            <div className="flex-1 flex flex-col items-center">
-              <ColorPicker
-                value={rightColor}
-                onChange={setRightColor}
-                label="右"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-4 relative flex flex-col items-center">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
-            ランダム
-          </div>
-          <div className="w-full border border-gray-300 rounded-lg pt-6 pb-4 px-2 flex flex-col gap-2 justify-center bg-gray-100">
-            <div className="flex flex-row flex-wrap gap-2 justify-center">
+            <div className="flex justify-center">
               <button
-                style={{
-                  backgroundColor: leftColor,
-                  color: "#fff",
-                  textShadow: "0 1px 4px rgba(0,0,0,0.7)",
-                }}
-                className="px-4 py-2 rounded hover:opacity-80 transition-colors"
-                onClick={handleRandomLeft}
-              >
-                左
-              </button>
-              <button
-                style={{
-                  backgroundColor: centerColor,
-                  color: "#fff",
-                  textShadow: "0 1px 4px rgba(0,0,0,0.7)",
-                }}
-                className="px-4 py-2 rounded hover:opacity-80 transition-colors"
-                onClick={handleRandomCenter}
-              >
-                中央
-              </button>
-              <button
-                style={{
-                  backgroundColor: rightColor,
-                  color: "#fff",
-                  textShadow: "0 1px 4px rgba(0,0,0,0.7)",
-                }}
-                className="px-4 py-2 rounded hover:opacity-80 transition-colors"
-                onClick={handleRandomRight}
-              >
-                右
-              </button>
-            </div>
-            <div className="flex justify-center mt-2">
-              <button
-                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition-colors"
+                className="px-8 py-1.5 bg-gray-400 text-white rounded hover:bg-gray-500 transition-colors text-sm"
                 style={{ textShadow: "0 1px 4px rgba(0,0,0,0.7)" }}
                 onClick={handleRandomAll}
               >
-                すべて
+                すべてランダム
               </button>
             </div>
           </div>

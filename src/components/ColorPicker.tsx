@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { HexColorPicker } from "react-colorful";
 import { ColorPickerStrategy } from "@/types/color";
+import { RefreshCw } from "lucide-react";
 
 function isHexColor(str: string) {
   return /^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(str);
@@ -15,9 +16,15 @@ interface ColorPickerProps {
   onChange: (color: string) => void;
   strategy?: ColorPickerStrategy; // 省略可
   label?: string;
+  onRandomClick?: () => void; // 追加
 }
 
-export function ColorPicker({ value, onChange, label }: ColorPickerProps) {
+export function ColorPicker({
+  value,
+  onChange,
+  label,
+  onRandomClick,
+}: ColorPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState(value);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -56,18 +63,31 @@ export function ColorPicker({ value, onChange, label }: ColorPickerProps) {
 
   return (
     <div className="relative inline-block" ref={pickerRef}>
-      <button
-        type="button"
-        className="w-12 h-12 rounded border border-gray-300 flex items-center justify-center text-white font-bold text-lg select-none"
-        style={{
-          backgroundColor: value,
-          textShadow: "0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
-        }}
-        onClick={() => setIsOpen((v) => !v)}
-        aria-label="カラーピッカーを開く"
-      >
-        {label}
-      </button>
+      <div className="flex items-center gap-1">
+        <button
+          type="button"
+          className="w-12 h-12 rounded border border-gray-300 flex items-center justify-center text-white font-bold text-lg select-none"
+          style={{
+            backgroundColor: value,
+            textShadow: "0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+          }}
+          onClick={() => setIsOpen((v) => !v)}
+          aria-label="カラーピッカーを開く"
+        >
+          {label}
+        </button>
+        {onRandomClick && (
+          <button
+            type="button"
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-700 border border-gray-300 shadow-sm"
+            aria-label="ランダム色にする"
+            onClick={onRandomClick}
+            tabIndex={-1}
+          >
+            <RefreshCw className="w-5 h-5" />
+          </button>
+        )}
+      </div>
       {isOpen && (
         <div className={panelClass}>
           <HexColorPicker
