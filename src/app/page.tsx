@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ColorCombination } from "@/types/color";
 import { LocalStorageColorStorage } from "@/lib/storage";
 import { ColorPicker } from "@/components/ColorPicker";
@@ -29,6 +29,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [title, setTitle] = useState("");
   const [showHelp, setShowHelp] = useState(false);
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const loadSavedCombinations = async () => {
@@ -174,6 +175,7 @@ export default function Home() {
 
         <div className="mb-6 flex justify-center">
           <input
+            ref={titleInputRef}
             type="text"
             className="text-2xl font-bold text-center border-b border-gray-300 px-4 py-2 min-w-[120px] max-w-full outline-none"
             value={title}
@@ -240,6 +242,8 @@ export default function Home() {
               setCenterColor(comb.centerSquareColor);
               setRightColor(comb.rightBackgroundColor);
               setTitle(comb.name);
+              // タイトル入力欄までスクロール
+              titleInputRef.current?.scrollIntoView({ behavior: "smooth" });
             }}
           />
         </div>
