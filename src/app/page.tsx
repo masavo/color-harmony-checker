@@ -26,7 +26,6 @@ export default function Home() {
   const [savedCombinations, setSavedCombinations] = useState<
     ColorCombination[]
   >([]);
-  const [isMobile, setIsMobile] = useState(false);
   const [title, setTitle] = useState("");
   const [showHelp, setShowHelp] = useState(false);
   const titleInputRef = useRef<HTMLInputElement>(null);
@@ -35,10 +34,6 @@ export default function Home() {
     const loadSavedCombinations = async () => {
       const combinations = await storage.list();
       setSavedCombinations(combinations);
-    };
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 428);
     };
 
     // URLパラメータから色とタイトルを初期化
@@ -53,9 +48,6 @@ export default function Home() {
     if (titleParam) setTitle(titleParam);
 
     loadSavedCombinations();
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // ランダムボタン
@@ -146,8 +138,8 @@ export default function Home() {
             leftColor={leftColor}
             rightColor={rightColor}
             centerColor={centerColor}
-            height={isMobile ? "16rem" : "40rem"}
-            centerSquareSize={isMobile ? "5rem" : "10rem"}
+            height="16rem"
+            centerSquareSize="5rem"
           />
         </div>
 
