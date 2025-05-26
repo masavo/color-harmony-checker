@@ -102,7 +102,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-center items-center gap-2 relative">
-          <h1 className="text-[clamp(1.2rem,6vw,2.5rem)] font-extrabold italic mb-8 bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block pl-8 whitespace-nowrap max-w-full overflow-hidden text-ellipsis">
+          <h1 className="text-[clamp(1.2rem,6vw,2.5rem)] font-extrabold italic mb-[0.3rem] bg-gradient-to-r from-purple-600 via-blue-500 via-green-500 via-green-400 via-yellow-300 via-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block pl-8 whitespace-nowrap max-w-full overflow-hidden text-ellipsis">
             色の相対性チェッカー
           </h1>
           <button
@@ -130,7 +130,7 @@ export default function Home() {
           )}
         </div>
 
-        <div className="mb-8 relative flex flex-col items-center">
+        <div className="mb-3 mt-3 relative flex flex-col items-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-100 px-3 text-lg font-bold z-10 border border-gray-300 rounded-full">
             カラーピッカー
           </div>
@@ -173,7 +173,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mb-6 flex justify-center">
+        <div className="mb-3 flex justify-center">
           <input
             ref={titleInputRef}
             type="text"
@@ -184,7 +184,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mb-8">
+        <div className="mb-3">
           <LiveColorPreview
             leftColor={leftColor}
             rightColor={rightColor}
