@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node --version && next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build"
+    "export": "npm run build"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -35,5 +35,14 @@
   },
   "engines": {
     "node": "22.x"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "8.5.31"
+    },
+    "rollup-plugin-terser": {
+      "serialize-javascript": "7.1.2"
+    },
+    "postcss-selector-parser": "7.1.7"
   }
 }
