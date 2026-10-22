@@ -9,4 +9,7 @@ export default withPWA({
   register: false,
   // App Router build metadata is not a public asset.
   buildExcludes: ["app-build-manifest.json"],
-})({});
+})({
+  output: "export",
+  images: { unoptimized: true },
+});
