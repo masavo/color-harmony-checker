@@ -1,6 +1,7 @@
 import withPWA from "next-pwa";
 
 const isProd = process.env.NODE_ENV === "production";
+const isVercel = process.env.VERCEL === "1";
 
 export default withPWA({
   dest: "public",
@@ -10,6 +11,6 @@ export default withPWA({
   // App Router build metadata is not a public asset.
   buildExcludes: ["app-build-manifest.json"],
 })({
-  output: "export",
-  images: { unoptimized: true },
+  // The legacy Pages workflow needs a separate basePath-aware export.
+  ...(isVercel ? { output: "export", images: { unoptimized: true } } : {}),
 });
